@@ -1,0 +1,14 @@
+#canvas{
+  background-color: #000000;
+  background-image: url("image_son/lune.jpg");      
+}
+@font-face { 
+  font-family: 'Minecraft'; 
+  src: url('Minecraft.ttf'); 
+}
+
+body{
+    font-family: Minecraft;
+    background-image:url("image_son/Milky-Way2.jpg");
+    color:white;
+}
