@@ -1,0 +1,3 @@
+language: javascript
+before_install:
+  - chmod +x gradlew # make sure the Gradle wrapper can be executed
