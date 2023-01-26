@@ -762,6 +762,8 @@ function Go() {
     }
 }
 function over() {
+    callAPI(document.getElementById('name').value,score);
+    score=0;
     $("pa").innerHTML="SELECT DIFFICULTY :<br><br> PRESS 1 FOR EASY - 2 FOR NORMAL - 3 FOR HARD - 4 FOR HARDCORE !";
     tab();  //réinitialise les tableaux de controle des monstres.
     help[0]=1;
@@ -804,7 +806,7 @@ function gameover() {
     ctx.fillStyle = "#fff";         //couleur blanche
     ctx.fillText("SCORE : "+score,150,337)
     ctx.fillText("INSERT COIN TO RESTART", 90, 397);
-    score=0;
+
 }
 function finish() {
     niveau=11;    //permet de ne pas faire apparaître les monstres une fois la partie terminée
@@ -814,7 +816,7 @@ function finish() {
     ctx.font="13pt Minecraft";
     ctx.fillText("SCORE : "+score,138,310);
     ctx.fillText("INSERT COIN TO RESTART",80,450);
-    score=0;
+
 }
 function restart1() {
     niveau=0;  //car le Go() ajoute un niveau
@@ -822,4 +824,24 @@ function restart1() {
     help[23]=-1;
     Go();
     clearInterval(ett);
+}
+var callAPI = (firstName,score_)=>{
+    // instantiate a headers object
+    var myHeaders = new Headers();
+    // add content type header to object
+    myHeaders.append("Content-Type", "application/json");
+    // using built in JSON utility package turn object to string and store in a variable
+    var raw = JSON.stringify({"name":firstName,"score":score_});
+    // create a JSON object with parameters for API call and store in a variable
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+    // make API call with parameters and use promises to get response
+    fetch("https://0lf88vxf4g.execute-api.us-east-1.amazonaws.com/ldm-dev-website-stage", requestOptions)
+    .then(response => response.text())
+    .then(result => alert(JSON.parse(result).body))
+    .catch(error => console.log('error', error));
 }
