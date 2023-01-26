@@ -762,7 +762,11 @@ function Go() {
     }
 }
 function over() {
-    callAPI(document.getElementById('name').value,score);
+    callAPI(document.getElementById('name').value,score);  //leaderboard
+    document.getElementById('Enter_user_name').style.visibility = "hidden";
+    document.getElementById('name').style.visibility = "hidden";
+    document.getElementById('leaderboard').style.visibility = "visible";
+    
     score=0;
     $("pa").innerHTML="SELECT DIFFICULTY :<br><br> PRESS 1 FOR EASY - 2 FOR NORMAL - 3 FOR HARD - 4 FOR HARDCORE !";
     tab();  //réinitialise les tableaux de controle des monstres.
@@ -819,6 +823,9 @@ function finish() {
 
 }
 function restart1() {
+    document.getElementById('Enter_user_name').style.visibility = "visible";
+    document.getElementById('name').style.visibility = "visible";
+    document.getElementById('leaderboard').style.visibility = "hidden";
     niveau=0;  //car le Go() ajoute un niveau
     vie=3;
     help[23]=-1;
@@ -842,6 +849,6 @@ var callAPI = (firstName,score_)=>{
     // make API call with parameters and use promises to get response
     fetch("https://0lf88vxf4g.execute-api.us-east-1.amazonaws.com/ldm-dev-website-stage", requestOptions)
     .then(response => response.text())
-    .then(result => alert(JSON.parse(result).body))
+    .then(result => document.getElementById('leaderboard').innerHTML=(JSON.parse(result).body))
     .catch(error => console.log('error', error));
 }
