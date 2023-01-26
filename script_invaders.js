@@ -108,6 +108,7 @@ function init(){
     tab();
     tableaux();
     menuaudio.play();
+    
     ttaf=setTimeout(affiche,25);    //lors du premier chargement de la page, le navigateur exécuterait la commande du css d'afficher la lune en fond de canvas après que le javascript dise de mettre l'image de base, si il n'y avait pas eu ce Timeout
     window.addEventListener("keydown", touched, false);
     window.addEventListener("keyup", toucheup, false);
@@ -274,6 +275,7 @@ function vtire(){
     help[3]=-1;
 }
 function vballe() {
+    score=score-1;
     nbm+=1; //le nombre de missiles en vol augmente de 1
     if (help[1]==-1) {
     switch (help[2]) { //le help[2] numérote chaque missile
