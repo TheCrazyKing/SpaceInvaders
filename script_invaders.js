@@ -720,6 +720,7 @@ function tcem(eemx,eemy) {
 }
 function hit() {
     explosion1audio.play();
+    score=score-500;
     vie=vie-1;
     if (vie==0) {
         gameover();
@@ -851,6 +852,6 @@ var callAPI = (firstName,score_)=>{
     // make API call with parameters and use promises to get response
     fetch("https://0lf88vxf4g.execute-api.us-east-1.amazonaws.com/ldm-dev-website-stage", requestOptions)
     .then(response => response.text())
-    .then(result => document.getElementById('leaderboard').innerHTML=(JSON.parse(result).body))
+    .then(result => document.getElementById('leaderboard').innerHTML=("Leaderboard:"+JSON.parse(result).body))
     .catch(error => console.log('error', error));
 }
