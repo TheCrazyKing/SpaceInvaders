@@ -770,7 +770,7 @@ function over() {
     document.getElementById('name').style.visibility = "hidden";
     document.getElementById('leaderboard').style.visibility = "visible";
     
-    score=0;
+    
     $("pa").innerHTML="SELECT DIFFICULTY :<br><br> PRESS 1 FOR EASY - 2 FOR NORMAL - 3 FOR HARD - 4 FOR HARDCORE !";
     tab();  //réinitialise les tableaux de controle des monstres.
     help[0]=1;
@@ -813,6 +813,7 @@ function gameover() {
     ctx.fillStyle = "#fff";         //couleur blanche
     ctx.fillText("SCORE : "+score,150,337)
     ctx.fillText("INSERT COIN TO RESTART", 90, 397);
+    score=0;
 
 }
 function finish() {
@@ -823,6 +824,7 @@ function finish() {
     ctx.font="13pt Minecraft";
     ctx.fillText("SCORE : "+score,138,310);
     ctx.fillText("INSERT COIN TO RESTART",80,450);
+    score=0;
 
 }
 function restart1() {
